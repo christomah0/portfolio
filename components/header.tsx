@@ -1,7 +1,6 @@
 "use client";
 
 import { NavLink } from "./nav-link";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "./ui/select";
 
 const Header = () => {
   return (
@@ -11,17 +10,6 @@ const Header = () => {
           <a href="/" className="border border-black p-2 transition hover:bg-black hover:text-white">christomah0</a>
           <NavLink />
         </div>
-
-        {/* Language selection */}
-        <Select>
-          <SelectTrigger className="ml-12">
-            <SelectValue placeholder="🇬🇧" />
-          </SelectTrigger>
-          <SelectContent className="border-none shadow-lg text-black">
-            <SelectItem value="en">🇬🇧</SelectItem>
-            <SelectItem value="fr">🇨🇵</SelectItem>
-          </SelectContent>
-        </Select>
       </nav>
     </header>
   )

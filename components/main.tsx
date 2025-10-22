@@ -1,6 +1,7 @@
 "use client";
 
 import AboutMeSection from "./sections/about-me-section";
+import ContactSection from "./sections/contact-section";
 import HeroSection from "./sections/hero-section";
 import ProjectsSection from "./sections/projects-section";
 import SkillsSection from "./sections/skills-section";
@@ -15,6 +16,8 @@ const Main = () => {
         <ProjectsSection />
         <Separator color={undefined} />
         <SkillsSection />
+        <Separator color={undefined} />
+        <ContactSection />
         <Separator color={undefined} />
         <AboutMeSection />
       </div>
