@@ -8,7 +8,7 @@ const AboutMeSection = () => {
       <div className="flex flex-col-reverse md:flex-row items-center gap-6 max-w-4xl">
         <div className="text-center md:text-left">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">About Me</h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
             Hi, I'm <span className="font-semibold">Jean Christophe MAHALOMBA</span>, a passionate and results-driven software developer with expertise in building scalable and robust applications. I thrive on solving complex problems and am dedicated to writing clean, efficient, and maintainable code. With a strong foundation in both front-end and back-end technologies, I enjoy bringing ideas to life from concept to deployment.
           </p>
         </div>
@@ -16,8 +16,8 @@ const AboutMeSection = () => {
           <Image
             src="/my-photo.png"
             alt="Jean Christophe MAHALOMBA"
-            width={400}
-            height={400}
+            width={600}
+            height={600}
             style={{ objectFit: "cover" }}
           />
         </div>

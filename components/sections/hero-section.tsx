@@ -38,7 +38,7 @@ const HeroSection = () => {
           </span>
         ))}
       </h1>
-      <p className="text-center text-sm sm:text-base md:text-lg text-gray-700 max-w-xl sm:max-w-2xl leading-relaxed">
+      <p className="text-center text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl sm:max-w-2xl leading-relaxed">
         {description}
       </p>
       <SocialLink />
