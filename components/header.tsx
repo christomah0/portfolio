@@ -7,7 +7,7 @@ const Header = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white/60 backdrop-blur-md w-full z-[99] border-b border-white/20">
+    <header className="fixed top-0 left-0 right-0 bg-white/60 backdrop-blur-md w-full z-[99] border-b border-white/20 shadow">
       <nav className="container mx-auto flex items-center justify-between h-14 px-4">
         <a href="/" className="text-sm sm:text-base font-medium border border-black px-2 py-1 rounded transition hover:bg-black hover:text-white">
           christomah0

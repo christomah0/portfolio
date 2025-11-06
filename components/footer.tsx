@@ -5,7 +5,7 @@ const Footer = () => {
 
   return (
     <footer className="h-[50px] flex items-center justify-center bg-black">
-      <span className="text-white">Copyright &copy; {year.getFullYear()}. Made by <span className="text-red-500">&hearts;</span>. Source code found on my <Link href={"https://github.com/christomah0"} target="_" className="underline">GitHub</Link>.</span>
+      <span className="text-white">Copyright &copy; {year.getFullYear()}. Made by <span className="text-red-500">&hearts;</span>. Source code found on my <Link href={"https://github.com/christomah0/portfolio"} target="_" className="underline">GitHub</Link>.</span>
     </footer>
   );
 }
