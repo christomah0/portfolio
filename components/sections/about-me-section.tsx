@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { FaReact, FaNodeJs, FaJava, FaAws, FaDocker, FaLaravel } from 'react-icons/fa';
-import { SiTypescript, SiSpringboot, SiJetpackcompose, SiPostgresql, SiMongodb, SiKubernetes, SiMysql } from 'react-icons/si';
+import { SiTypescript, SiSpringboot, SiJetpackcompose, SiPostgresql, SiMongodb, SiKubernetes, SiMysql, SiGithub } from 'react-icons/si';
 
 const AboutMeSection = () => {
   return (
@@ -62,10 +62,10 @@ const AboutMeSection = () => {
             <FaDocker />
             <span className="text-xs sm:text-sm mt-2">Docker</span>
           </div>
-          {/* <div className="flex flex-col items-center">
-            <SiKubernetes />
-            <span className="text-xs sm:text-sm mt-2">K8s</span>
-          </div> */}
+          <div className="flex flex-col items-center">
+            <SiGithub />
+            <span className="text-xs sm:text-sm mt-2">GitHub</span>
+          </div>
         </div>
       </div>
     </section>
