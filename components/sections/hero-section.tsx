@@ -26,8 +26,8 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section id="hero" className="w-full min-h-screen flex flex-col gap-12 items-center justify-center">
-      <h1 className="text-7xl font-semibold my-4">
+    <section id="hero" className="w-full min-h-screen flex flex-col gap-6 sm:gap-8 items-center justify-center px-4 py-8 md:py-12">
+      <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-semibold my-2 text-center leading-tight">
         {title.split("").map((char, index) => (
           <span
             key={key + "-" + index}
@@ -38,12 +38,12 @@ const HeroSection = () => {
           </span>
         ))}
       </h1>
-      <p className="text-center text-lg md:text-xl text-gray-700 max-w-4xl leading-relaxed">
+      <p className="text-center text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl sm:max-w-2xl leading-relaxed">
         {description}
       </p>
       <SocialLink />
-      <Link href={"#about-me"} className="absolute bottom-0 p-2 border border-black rounded-full hover:bg-black hover:text-white animate-bounce">
-        <FaArrowDown size={16} className="text-black hover:text-white" />
+      <Link href={"#about-me"} className="fixed bottom-6 sm:bottom-8 p-2 border border-black rounded-full hover:bg-black hover:text-white">
+        <FaArrowDown size={14} className="text-black hover:text-white" />
       </Link>
     </section>
   )
