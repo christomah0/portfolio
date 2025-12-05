@@ -12,12 +12,12 @@ const Main = () => {
     <main className="pt-[50px] h-full">
       <div className="container w-full mx-auto border">
         <HeroSection />
-        <Separator color={undefined} />
-        <ProjectsSection />
+        {/* <Separator color={undefined} />
+        <ProjectsSection /> */}
         <Separator color={undefined} />
         <SkillsSection />
-        <Separator color={undefined} />
-        <ContactSection />
+        {/* <Separator color={undefined} />
+        <ContactSection /> */}
         <Separator color={undefined} />
         <AboutMeSection />
       </div>

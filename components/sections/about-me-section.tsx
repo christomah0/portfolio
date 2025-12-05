@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { FaReact, FaNodeJs, FaJava, FaAws, FaDocker } from 'react-icons/fa';
-import { SiTypescript, SiSpringboot, SiJetpackcompose, SiPostgresql, SiMongodb, SiKubernetes } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaJava, FaAws, FaDocker, FaLaravel } from 'react-icons/fa';
+import { SiTypescript, SiSpringboot, SiJetpackcompose, SiPostgresql, SiMongodb, SiKubernetes, SiMysql } from 'react-icons/si';
 
 const AboutMeSection = () => {
   return (
@@ -24,19 +24,15 @@ const AboutMeSection = () => {
       </div>
 
       <div className="w-full max-w-6xl">
-        <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-center mb-4">Technologies I Use</h3>
+        <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-center mb-4">Some Of Technologies I Use</h3>
         <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-11 gap-6 justify-center text-3xl sm:text-4xl md:text-5xl text-gray-800">
           <div className="flex flex-col items-center">
             <FaReact />
             <span className="text-xs sm:text-sm mt-2">React</span>
           </div>
           <div className="flex flex-col items-center">
-            <SiTypescript />
-            <span className="text-xs sm:text-sm mt-2">TypeScript</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <FaNodeJs />
-            <span className="text-xs sm:text-sm mt-2">Node.js</span>
+            <SiMysql />
+            <span className="text-xs sm:text-sm mt-2">MySQL</span>
           </div>
           <div className="flex flex-col items-center">
             <SiSpringboot />
@@ -59,17 +55,17 @@ const AboutMeSection = () => {
             <span className="text-xs sm:text-sm mt-2">MongoDB</span>
           </div>
           <div className="flex flex-col items-center">
-            <FaAws />
-            <span className="text-xs sm:text-sm mt-2">AWS</span>
+            <FaLaravel />
+            <span className="text-xs sm:text-sm mt-2">Laravel</span>
           </div>
           <div className="flex flex-col items-center">
             <FaDocker />
             <span className="text-xs sm:text-sm mt-2">Docker</span>
           </div>
-          <div className="flex flex-col items-center">
+          {/* <div className="flex flex-col items-center">
             <SiKubernetes />
             <span className="text-xs sm:text-sm mt-2">K8s</span>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

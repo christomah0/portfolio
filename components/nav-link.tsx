@@ -8,21 +8,21 @@ const NavLink = ({ vertical = false, onClick }: NavLinkProps) => {
 
   return (
     <ul className={base}>
-      <li>
+      {/* <li>
         <a href="#projects" className="hover:underline cursor-pointer" onClick={onClick}>
           Projects
         </a>
-      </li>
+      </li> */}
       <li>
         <a href="#skills" className="hover:underline cursor-pointer" onClick={onClick}>
           Skills
         </a>
       </li>
-      <li>
+      {/* <li>
         <a href="#contact" className="hover:underline cursor-pointer" onClick={onClick}>
           Contact
         </a>
-      </li>
+      </li> */}
       <li>
         <a href="#about-me" className="hover:underline cursor-pointer" onClick={onClick}>
           About Me
