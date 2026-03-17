@@ -14,8 +14,10 @@ export default async function LoginPage() {
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
+      [name]: value,
     }));
   };
 
