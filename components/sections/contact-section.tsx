@@ -1,4 +1,8 @@
+"use client";
+
 import { useState } from "react";
+import { useTranslation } from "@/lib/i18n/i18n-context";
+import { Send, CheckCircle, Mail, User, MessageSquare } from "lucide-react";
 
 type FormState = {
   name: string;
@@ -7,10 +11,11 @@ type FormState = {
 };
 
 const ContactSection = () => {
+  const { t } = useTranslation();
   const [form, setForm] = useState<FormState>({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -18,18 +23,17 @@ const ContactSection = () => {
   };
 
   const validate = () => {
-    if (!form.name.trim()) return "Please enter your name.";
-    if (!form.email.trim()) return "Please enter your email.";
+    if (!form.name.trim()) return t.contact.errorName;
+    if (!form.email.trim()) return t.contact.errorEmail;
     const re = /\S+@\S+\.\S+/;
-    if (!re.test(form.email)) return "Please enter a valid email address.";
-    if (!form.message.trim()) return "Please enter a message.";
+    if (!re.test(form.email)) return t.contact.errorEmailInvalid;
+    if (!form.message.trim()) return t.contact.errorMessage;
     return null;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    setSuccess(null);
     const v = validate();
     if (v) {
       setError(v);
@@ -49,72 +53,126 @@ const ContactSection = () => {
         throw new Error(data?.error || "Failed to send message");
       }
 
-      setSuccess("Message sent — thank you!");
+      setSuccess(true);
       setForm({ name: "", email: "", message: "" });
-    } catch (err: any) {
-      setError(err?.message || "An unexpected error occurred.");
+    } catch {
+      setError(t.contact.errorGeneric);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section id="contact" className="w-full min-h-screen py-8 px-4 md:py-12 md:px-8 flex items-center">
-      <div className="max-w-xl md:max-w-3xl w-full mx-auto">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">Contact</h2>
-        <p className="mb-4 text-sm sm:text-base text-muted-foreground">Have a question or want to work together? Send me a message.</p>
+    <section id="contact" className="w-full min-h-screen py-12 px-4 md:py-20 flex items-center">
+      <div className="max-w-2xl w-full mx-auto">
+        {/* Header */}
+        <div className="text-center mb-10">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-3">
+            {t.contact.title}
+          </h2>
+          <p className="text-sm sm:text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
+            {t.contact.subtitle}
+          </p>
+        </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block mb-1 text-sm font-medium">Name</label>
-            <input
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              className="w-full rounded-md border px-3 py-2 text-sm sm:text-base"
-              placeholder="Your name"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block mb-1 text-sm font-medium">Email</label>
-            <input
-              name="email"
-              type="email"
-              value={form.email}
-              onChange={handleChange}
-              className="w-full rounded-md border px-3 py-2 text-sm sm:text-base"
-              placeholder="you@example.com"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block mb-1 text-sm font-medium">Message</label>
-            <textarea
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              className="w-full rounded-md border px-3 py-2 h-28 sm:h-32 text-sm sm:text-base"
-              placeholder="Write your message here"
-              required
-            />
-          </div>
-
-          {error && <div className="text-sm text-red-600">{error}</div>}
-          {success && <div className="text-sm text-green-600">{success}</div>}
-
-          <div>
+        {success ? (
+          /* Success state */
+          <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-8 sm:p-12 text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-6">
+              <CheckCircle className="text-green-600" size={32} />
+            </div>
+            <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 mb-2">
+              {t.contact.successTitle}
+            </h3>
+            <p className="text-slate-600 mb-6">
+              {t.contact.successMessage}
+            </p>
             <button
-              type="submit"
-              className="w-full sm:w-auto inline-flex justify-center items-center px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-60"
-              disabled={loading}
+              onClick={() => setSuccess(false)}
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors text-sm font-medium"
             >
-              {loading ? "Sending..." : "Send message"}
+              {t.contact.sendAnother}
             </button>
           </div>
-        </form>
+        ) : (
+          /* Form */
+          <div className="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 sm:p-8">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  {t.contact.nameLabel}
+                </label>
+                <div className="relative">
+                  <User size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                  <input
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    className="w-full pl-11 pr-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-slate-500 text-sm sm:text-base transition-colors"
+                    placeholder={t.contact.namePlaceholder}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  {t.contact.emailLabel}
+                </label>
+                <div className="relative">
+                  <Mail size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                  <input
+                    name="email"
+                    type="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    className="w-full pl-11 pr-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-slate-500 text-sm sm:text-base transition-colors"
+                    placeholder={t.contact.emailPlaceholder}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  {t.contact.messageLabel}
+                </label>
+                <div className="relative">
+                  <MessageSquare size={18} className="absolute left-3.5 top-3 text-slate-400" />
+                  <textarea
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    className="w-full pl-11 pr-4 py-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-slate-500 h-32 sm:h-36 text-sm sm:text-base resize-none transition-colors"
+                    placeholder={t.contact.messagePlaceholder}
+                    required
+                  />
+                </div>
+              </div>
+
+              {error && (
+                <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                  {error}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                className="w-full inline-flex justify-center items-center gap-2 px-6 py-3 rounded-lg bg-slate-900 text-white hover:bg-slate-800 disabled:opacity-60 transition-colors text-sm font-medium"
+                disabled={loading}
+              >
+                {loading ? (
+                  t.contact.sending
+                ) : (
+                  <>
+                    <Send size={16} />
+                    {t.contact.send}
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
+        )}
       </div>
     </section>
   );

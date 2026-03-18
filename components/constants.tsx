@@ -4,28 +4,28 @@ import { ProjectType } from "../types/project.type";
 export const PROJECT_DATA: ProjectType[] = [
   {
     imageUrl: "/globe.svg",
-    name: "Gestion de projet",
+    name: "Project Management",
     shortDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non voluptate eos obcaecati rerum.",
     linkName: "Example link",
     link: "https://example.com"
   },
   {
     imageUrl: "/globe.svg",
-    name: "Gestion de projet",
+    name: "Project Management",
     shortDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non voluptate eos obcaecati rerum.",
     linkName: "Example link",
     link: "https://example.com"
   },
   {
     imageUrl: "/globe.svg",
-    name: "Gestion de projet",
+    name: "Project Management",
     shortDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non voluptate eos obcaecati rerum.",
     linkName: "Example link",
     link: "https://example.com"
   },
   {
     imageUrl: "/globe.svg",
-    name: "Gestion de projet",
+    name: "Project Management",
     shortDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non voluptate eos obcaecati rerum.",
     linkName: "Example link",
     link: "https://example.com"

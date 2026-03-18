@@ -1,30 +1,35 @@
-import Image from 'next/image';
-import { FaReact, FaNodeJs, FaJava, FaAws, FaDocker, FaLaravel } from 'react-icons/fa';
-import { SiTypescript, SiSpringboot, SiJetpackcompose, SiPostgresql, SiMongodb, SiKubernetes, SiMysql, SiGithub } from 'react-icons/si';
+"use client";
 
-const AboutMeSection = () => {
+import Image from "next/image";
+import { FaReact, FaJava, FaDocker, FaLaravel } from "react-icons/fa";
+import { SiSpringboot, SiJetpackcompose, SiPostgresql, SiMongodb, SiMysql, SiGithub } from "react-icons/si";
+import { useTranslation } from "@/lib/i18n/i18n-context";
+
+const AboutMeSection = ({ photoUrl }: { photoUrl: string }) => {
+  const { t } = useTranslation();
+
   return (
     <section id="about-me" className="w-full min-h-screen flex flex-col gap-8 items-center justify-center p-6 md:p-8">
-      <div className="flex flex-col-reverse md:flex-row items-center gap-6 max-w-4xl">
-        <div className="text-center md:text-left">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">About Me</h2>
+      <div className="flex flex-col-reverse md:flex-row items-center gap-8 max-w-4xl">
+        <div className="text-center md:text-left flex-1">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">{t.publicSections.aboutMeTitle}</h2>
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
-            Hi, I'm <span className="font-semibold">Jean Christophe MAHALOMBA</span>, a passionate and results-driven software developer with expertise in building scalable and robust applications. I thrive on solving complex problems and am dedicated to writing clean, efficient, and maintainable code. With a strong foundation in both front-end and back-end technologies, I enjoy bringing ideas to life from concept to deployment.
+            {t.publicSections.aboutMeDescription}
           </p>
         </div>
-        <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden flex-shrink-0">
+        <div className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden flex-shrink-0 ring-4 ring-slate-200">
           <Image
-            src="/my-photo.png"
+            src={photoUrl}
             alt="Jean Christophe MAHALOMBA"
             width={600}
             height={600}
-            style={{ objectFit: "cover" }}
+            className="object-cover w-full h-full"
           />
         </div>
       </div>
 
       <div className="w-full max-w-6xl">
-        <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-center mb-4">Some Of Technologies I Use</h3>
+        <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-center mb-4">{t.publicSections.techTitle}</h3>
         <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-11 gap-6 justify-center text-3xl sm:text-4xl md:text-5xl text-gray-800">
           <div className="flex flex-col items-center">
             <FaReact />
