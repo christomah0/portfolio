@@ -20,6 +20,8 @@ model User {
   email         String
   emailVerified Boolean   @default(false)
   image         String?
+  username        String?   @unique
+  displayUsername String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @default(now()) @updatedAt
   sessions      Session[]
@@ -72,4 +74,63 @@ model Verification {
   updatedAt  DateTime @default(now()) @updatedAt
 
   @@map("verification")
+}
+
+model Project {
+  id               String   @id @default(cuid())
+  imageUrl         String   @default("/globe.svg")
+  name             String
+  shortDescription String
+  linkName         String
+  link             String
+  order            Int      @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("project")
+}
+
+model Skill {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("skill")
+}
+
+model Experience {
+  id          String   @id @default(cuid())
+  role        String
+  company     String
+  location    String   @default("")
+  startDate   String
+  endDate     String?
+  description String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("experience")
+}
+
+model PageView {
+  id        String   @id @default(cuid())
+  path      String
+  referrer  String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@index([path])
+  @@index([createdAt])
+  @@map("page_view")
+}
+
+model SiteSettings {
+  id       String @id @default("default")
+  photoUrl String @default("/my-photo.png")
+
+  @@map("site_settings")
 }

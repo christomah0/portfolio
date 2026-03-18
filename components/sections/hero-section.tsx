@@ -4,16 +4,14 @@ import { useEffect, useState } from "react";
 import SocialLink from "../social-link";
 import { FaArrowDown } from "react-icons/fa6";
 import Link from "next/link";
+import { useTranslation } from "@/lib/i18n/i18n-context";
 
-const title = "Software Developer";
-const description = `
-  Ready to build something great? I'm a software developer with a knack for creating fast, responsive, and user-friendly applications. 
-  Let's connect and discuss how my skills can help you achieve your project goals.
-`;
-const ANIMATION_DURATION = 0.5; // seconds per character
-const ANIMATION_DELAY = 0.1; // seconds between each character
+const ANIMATION_DURATION = 0.5;
+const ANIMATION_DELAY = 0.1;
 
 const HeroSection = () => {
+  const { t } = useTranslation();
+  const title = t.hero.title;
   const [key, setKey] = useState(0);
 
   useEffect(() => {
@@ -23,7 +21,7 @@ const HeroSection = () => {
     }, totalDuration * 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [title]);
 
   return (
     <section id="hero" className="w-full min-h-screen flex flex-col gap-6 sm:gap-8 items-center justify-center px-4 py-8 md:py-12">
@@ -39,7 +37,7 @@ const HeroSection = () => {
         ))}
       </h1>
       <p className="text-center text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl sm:max-w-2xl leading-relaxed">
-        {description}
+        {t.hero.description}
       </p>
       <SocialLink />
       <Link href={"#about-me"} className="fixed bottom-6 sm:bottom-8 p-2 border border-black rounded-full hover:bg-black hover:text-white">

@@ -21,7 +21,7 @@ export async function signOutAction() {
 }
 
 // export async function signUpAction(data: { email: string, username: string; password: string }) {
-//   await authClient.signUp({
-    
+//   await authClient.signUp.email({
+//     email: data.email
 //   })
 // }
