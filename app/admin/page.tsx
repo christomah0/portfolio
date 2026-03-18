@@ -40,8 +40,7 @@ export default function LoginPage() {
         throw new Error(authError.message || t.login.invalidCredentials);
       }
 
-      router.push("/dashboard");
-      router.refresh();
+      window.location.href = "/dashboard";
     } catch (err) {
       setError(
         err instanceof Error ? err.message : t.login.error
